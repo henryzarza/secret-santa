@@ -3,6 +3,9 @@ module.exports = {
   content: ['src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      borderWidth: {
+        avatar: '6px',
+      },
       colors: {
         supernova: '#fac900' /* yellow / warning */,
         spicyMustard: '#6e5a0d' /* dark yellow */,
@@ -22,6 +25,12 @@ module.exports = {
         pastelMagenta: '#ff9dbf' /* pink */,
         padua: '#b1e3cc' /* lightest green - placeholder color */,
         vistaBlue: '#94d1b4' /* light green - placeholder color */,
+      },
+      height: {
+        18: '72px',
+      },
+      width: {
+        18: '72px',
       },
     },
     fontFamily: {

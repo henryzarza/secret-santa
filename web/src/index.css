@@ -12,3 +12,15 @@
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */
+
+ @layer base {
+  svg {
+    @apply fill-current;
+  }
+}
+
+ @layer utilities {
+  .center {
+    @apply flex justify-center items-center;
+  }
+}
