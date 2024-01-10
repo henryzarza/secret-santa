@@ -3,6 +3,11 @@ module.exports = {
   content: ['src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        auth: 'url("/images/bg__auth.svg")',
+        checked: 'url("/images/checkbox--checked.svg")',
+        unchecked: 'url("/images/checkbox--unchecked.svg")',
+      },
       borderWidth: {
         avatar: '6px',
       },
@@ -41,4 +46,5 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: ['status-success', 'status-error', 'status-warning'],
 }
