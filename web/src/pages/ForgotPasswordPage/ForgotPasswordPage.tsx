@@ -47,7 +47,7 @@ const ForgotPasswordPage = () => {
         className="mb-8 text-white"
         heading="Forgot Password?"
       />
-      <Form onSubmit={onSubmit} className="auth-form">
+      <Form onSubmit={onSubmit} className="mb-10">
         <div className="relative mb-4">
           <Label name="email" errorClassName="error">
             Email

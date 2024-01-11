@@ -46,7 +46,7 @@ const LoginPage = () => {
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
 
       <HeaderWithRulers className="mb-8 text-white" heading="LOGIN" />
-      <Form onSubmit={onSubmit} className="auth-form">
+      <Form onSubmit={onSubmit} className="mb-10">
         <div className="relative mb-4">
           <Label name="email" errorClassName="error">
             Email

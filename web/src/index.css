@@ -101,20 +101,12 @@
 }
 
 @layer components {
-  .bg-auth {
-    @apply min-h-screen w-full bg-silverTree dark:bg-nileBlue bg-[center_top] bg-no-repeat bg-[length:1440px_auto] min-[1440px]:bg-[length:100%_auto];
-  }
-
   .bg-interior {
     @apply grid min-h-screen w-full grid-cols-12 gap-x-5 bg-silverTree bg-no-repeat dark:bg-nileBlue;
   }
 
   .page-title {
     @apply font-condensed uppercase text-[116px] text-white leading-none mb-5;
-  }
-
-  .auth-form {
-    @apply mb-10;
   }
 
   .auth-links {
@@ -127,19 +119,6 @@
 
   .error-message {
     @apply text-orangeRed block py-2;
-  }
-
-  .dropdown {
-    @apply relative top-6 left-6;
-  }
-
-  .dropdown:before {
-    content: '';
-    @apply border-[12px] border-transparent border-b-white absolute -top-[24px] left-[32px];
-  }
-
-  .dropdown li {
-    @apply flex items-center gap-x-3 font-condensed text-3xl uppercase text-black;
   }
 
   .with-rulers {
