@@ -1,12 +1,14 @@
-import { useState } from 'react'
-
-const Hamburger = () => {
-  const [isHamburger, setIsHamburger] = useState(true)
-
+const Hamburger = ({
+  isHamburger,
+  toggleNav,
+}: {
+  isHamburger: boolean
+  toggleNav: () => void
+}) => {
   return (
     <button
       className="flex h-[58px] w-[68px] flex-col items-center justify-center bg-supernova"
-      onClick={() => setIsHamburger((prevValue) => !prevValue)}
+      onClick={toggleNav}
     >
       <div
         className={`absolute h-[3px] w-12 bg-black transition-transform ${
