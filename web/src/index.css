@@ -73,11 +73,11 @@
   }
 
   input[type="checkbox"]:checked + label:before {
-    @apply content-[''] w-10 h-10 block relative -top-1 bg-checked;
+    @apply bg-checked;
   }
 
   button[type="submit"] {
-    @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5;
+    @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5 transition-colors hover:bg-white;
   }
 
   button.medium,

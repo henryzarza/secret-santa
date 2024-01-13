@@ -4,7 +4,14 @@ import { Label, PasswordField, TextField } from '@redwoodjs/forms'
 
 import Icon from '../Icon/Icon'
 
-const ShowHidePassword = ({ label, name, ...rest }) => {
+const ShowHidePassword = ({
+  label,
+  name,
+  ...rest
+}: {
+  label: string
+  name: string
+}) => {
   const [isPasswordShowing, setIsShowPasswordShowing] = useState(false)
 
   const toggleShowPassword = () => {
