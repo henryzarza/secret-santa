@@ -1,17 +1,15 @@
 import { useState } from 'react'
 
 import { Label, PasswordField, TextField } from '@redwoodjs/forms'
+import type { InputFieldProps } from '@redwoodjs/forms'
 
 import Icon from '../Icon/Icon'
 
-const ShowHidePassword = ({
-  label,
-  name,
-  ...rest
-}: {
+interface Props extends InputFieldProps {
   label: string
-  name: string
-}) => {
+}
+
+const ShowHidePassword = ({ label, name, ...rest }: Props) => {
   const [isPasswordShowing, setIsShowPasswordShowing] = useState(false)
 
   const toggleShowPassword = () => {

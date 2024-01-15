@@ -71,7 +71,6 @@ const LoginPage = () => {
           <ShowHidePassword
             label="Password"
             name="password"
-            errorClassName="error"
             autoComplete="current-password"
             placeholder=""
             validation={{

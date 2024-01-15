@@ -72,7 +72,6 @@ const SignupPage = () => {
             label="Password"
             name="password"
             placeholder=""
-            className="rw-input"
             errorClassName="rw-input rw-input-error"
             autoComplete="current-password"
             validation={{

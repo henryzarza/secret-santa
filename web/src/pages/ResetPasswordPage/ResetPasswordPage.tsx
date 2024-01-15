@@ -66,7 +66,6 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
             name="password"
             autoComplete="new-password"
             className="rw-input"
-            errorClassName="rw-input rw-input-error"
             disabled={!enabled}
             ref={passwordRef}
             validation={{
