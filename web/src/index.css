@@ -134,15 +134,15 @@
 
   /* RSVP Status */
   .status-success {
-    @apply bg-spanishGreen text-spanishGreen;
+    @apply bg-spanishGreen text-white;
   }
 
   .status-warning {
-    @apply bg-supernova text-supernova;
+    @apply bg-supernova text-white;
   }
 
   .status-error {
-    @apply bg-orangeRed text-orangeRed;
+    @apply bg-orangeRed text-white;
   }
 
   .number-with-outline {
