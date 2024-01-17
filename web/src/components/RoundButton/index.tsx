@@ -1,13 +1,13 @@
 import Icon from '../Icon/Icon'
 
-const RoundButton = ({
-  status,
-}: {
+export interface RoundButtonProps {
   status: 'success' | 'warning' | 'error'
-}) => {
+}
+
+const RoundButton = ({ status }: RoundButtonProps) => {
   return (
     <button
-      className={`center h-16 w-16 rounded-full border-2 border-white status-${status}`}
+      className={`center h-16 w-16 rounded-full border-2 border-white status-${status} transition-transform hover:scale-105 hover:opacity-90`}
     >
       <Icon id="plus" />
     </button>
