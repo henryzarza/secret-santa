@@ -88,7 +88,7 @@
   a.button.small,
   button.small,
   button[type="submit"].small {
-    @apply inline-block h-8 px-4 text-sm font-bold uppercase;
+    @apply inline-block h-8 px-4 text-sm font-bold uppercase transition-all;
   }
 
   main {
