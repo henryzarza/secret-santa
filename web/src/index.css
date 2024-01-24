@@ -148,6 +148,10 @@
   .number-with-outline {
     @apply font-script text-[130px] leading-none;
   }
+
+  .text-stroke {
+    text-shadow: 5px 5px #FFF, -5px -5px #FFF, -5px 3px #FFF, 5px -5px #FFF
+  }
 }
 
 @layer utilties {

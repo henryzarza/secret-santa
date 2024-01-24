@@ -9,7 +9,7 @@ const MyAccount = () => {
   const [isDropdownShowing, setIsDropdownShowing] = useState(false)
 
   return (
-    <div>
+    <div className="relative">
       <button
         className="flex items-center gap-2 text-black dark:text-white"
         onClick={() => setIsDropdownShowing((prevValue) => !prevValue)}
@@ -27,17 +27,17 @@ const MyAccount = () => {
       <AnimatePresence>
         {isDropdownShowing && (
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="relative left-6 top-6 inline-block bg-white py-5 pl-4 pr-5 before:absolute before:-top-6 before:left-8 before:border-[12px] before:border-transparent before:border-b-white"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 60 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute left-6 top-6 inline-block bg-white py-5 pl-4 pr-5 before:absolute before:-top-6 before:left-8 before:border-[12px] before:border-transparent before:border-b-white"
           >
             <ul className="flex flex-col gap-2">
               <li className="flex items-center gap-x-3 font-condensed text-3xl uppercase text-black">
                 <div className="text-pastelMagenta">
                   <Icon id="user" size={32} />
                 </div>
-                My Account
+                Account
               </li>
               <li className="flex items-center gap-x-3 font-condensed text-3xl uppercase text-black">
                 <div className="text-pastelMagenta">

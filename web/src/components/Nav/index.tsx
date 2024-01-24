@@ -4,7 +4,7 @@ import Hamburger from '../Hamburger'
 
 const NAV_LINKS = [
   {
-    link: '/dashboard',
+    link: '/',
     text: 'Dashboard',
   },
   {
