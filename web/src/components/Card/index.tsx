@@ -1,7 +1,17 @@
-import Avatar from '../Avatar/Avatar'
+import Avatar, { AvatarProps } from '../Avatar/Avatar'
 import Icon from '../Icon/Icon'
 
-const Card = ({ avatar, isCloseShowing, name, email }) => {
+const Card = ({
+  avatar,
+  isCloseShowing,
+  name,
+  email
+} : {
+  avatar: AvatarProps;
+  isCloseShowing: boolean;
+  name: string;
+  email: string;
+}) => {
   return (
     <div className="relative ml-5 w-[calc(100%-20px)] bg-white py-6 pl-[72px] pr-5">
       {isCloseShowing && (

@@ -1,7 +1,7 @@
 import Icon from '../Icon/Icon'
 import Indicator from '../Indicator/Indicator'
 
-interface AvatarProps {
+export interface AvatarProps {
   avatar?: string
   alt?: string
   letter?: string

@@ -62,3 +62,7 @@ export const Upload: Story = {
 export const User: Story = {
   args: { id: 'user' },
 }
+
+export const Edit: Story = {
+  args: { id: 'edit' },
+}
