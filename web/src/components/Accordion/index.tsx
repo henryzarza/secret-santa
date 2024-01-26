@@ -18,7 +18,7 @@ const Accordion = ({ children, defaultIsShowing = false, heading }) => {
         onClick={toggleShowing}
       >
         {heading}
-        <div className="w-full flex-1 border-t-1 border-t-black" />
+        <div className="w-full flex-1 border-t border-t-current" />
         <motion.div animate={{ rotate: isShowing ? -180 : 0 }}>
           <Icon id="chevron" />
         </motion.div>
