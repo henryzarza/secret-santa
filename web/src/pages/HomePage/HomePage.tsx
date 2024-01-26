@@ -71,7 +71,7 @@ const HomePage = () => {
         <h1 className="font-condensed flex-1 text-7xl leading-[0.8] lg:text-[150px] uppercase text-white font-normal">
           Smith Christmas
         </h1>
-        <button className="text-black dark:text-white hover:text-white">
+        <button className="text-black dark:text-white hover:text-supernova">
           <Icon id="edit" />
         </button>
         <button className="small bg-supernova rounded-full hover:bg-spicyMustard hover:text-white">
@@ -109,6 +109,7 @@ const HomePage = () => {
           .filter(el => filterBy ? el.indicator === filterBy : true)
           .map(user => (
             <Card
+              key={user.email}
               avatar={{
                 avatar: user.avatar,
                 indicator: user.indicator as AvatarProps['indicator'],

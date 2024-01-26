@@ -5,15 +5,20 @@ const Card = ({
   avatar,
   isCloseShowing,
   name,
-  email
+  email,
+  onClick
 } : {
   avatar: AvatarProps;
   isCloseShowing: boolean;
   name: string;
   email: string;
+  onClick?: () => void;
 }) => {
   return (
-    <div className="relative ml-5 w-[calc(100%-20px)] bg-white py-6 pl-[72px] pr-5">
+    <div
+      className={`relative ml-5 w-[calc(100%-20px)] bg-white py-6 pl-[72px] pr-5 ${onClick ? 'transition-all cursor-pointer hover:shadow-md hover:scale-105' : ''}`}
+      onClick={onClick}
+    >
       {isCloseShowing && (
         <button className="absolute right-8 top-8 text-bombay">
           <Icon id="close" />

@@ -12,7 +12,7 @@ type Story = StoryObj<typeof SlideOut>
 
 export const Primary: Story = {
   render: () => (
-    <SlideOut handleClose={() => {}}>
+    <SlideOut toggleOpen={() => ({})} isOpen>
       <div className="text-white">SlideOut</div>
     </SlideOut>
   ),
