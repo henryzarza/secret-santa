@@ -23,7 +23,7 @@ const Nav = () => {
   return (
     <>
       <div
-        className={`flex h-screen w-[460px] flex-col justify-between bg-supernova px-12 pb-12 pt-[160px] transition-transform duration-500 ${
+        className={`flex fixed z-20 h-screen w-[460px] flex-col justify-between bg-supernova px-12 pb-12 pt-[160px] transition-transform duration-500 ${
           isHamburger ? '-translate-x-[120%]' : 'translate-x-0'
         }`}
       >
@@ -55,7 +55,7 @@ const Nav = () => {
           </ul>
         </nav>
       </div>
-      <div className="absolute left-8 top-6">
+      <div className="fixed z-20 left-8 top-6">
         <Hamburger
           toggleNav={() => setIsHamburger((prevValue) => !prevValue)}
           isHamburger={isHamburger}
