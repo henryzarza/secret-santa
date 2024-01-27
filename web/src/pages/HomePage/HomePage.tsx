@@ -68,7 +68,7 @@ const HomePage = () => {
         4 weeks & 2 days until
       </h2>
       <div className="flex flex-wrap gap-3 justify-between items-center mb-6 md:mb-12">
-        <h1 className="font-condensed flex-1 text-7xl leading-[0.8] lg:text-[150px] uppercase text-white font-normal">
+        <h1 className="font-condensed flex-1 text-7xl leading-[0.8] lg:text-[116px] uppercase text-white font-normal">
           Smith Christmas
         </h1>
         <button className="text-black dark:text-white hover:text-supernova">

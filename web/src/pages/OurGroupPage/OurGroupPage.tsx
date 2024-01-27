@@ -6,6 +6,7 @@ import Card from 'src/components/Card'
 import EmptyCard from 'src/components/EmptyCard'
 import Icon from 'src/components/Icon/Icon'
 import SlideOut from 'src/components/SlideOut'
+import WishListItem from 'src/components/WishListItem'
 
 const MOCK_DATA = [
   {
@@ -57,7 +58,7 @@ const MOCK_DATA_RSVP = [
 ]
 
 const OurGroupPage = () => {
-  const [isSlideOutOpen, setIsSlideOut] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<typeof MOCK_DATA[number] | null>()
 
   return (
     <>
@@ -67,7 +68,7 @@ const OurGroupPage = () => {
         4 weeks & 2 days until December 23, 2024
       </h2>
       <div className="flex flex-wrap gap-3 justify-between items-center mb-6 md:mb-12">
-        <h1 className="font-condensed flex-1 text-7xl leading-[0.8] lg:text-[150px] uppercase text-white font-normal">
+        <h1 className="font-condensed flex-1 text-7xl leading-[0.8] lg:text-[116px] uppercase text-white font-normal">
           Smith Christmas
         </h1>
         <button className="text-black dark:text-white hover:text-supernova">
@@ -76,7 +77,7 @@ const OurGroupPage = () => {
       </div>
       <div className="flex flex-col gap-6 md:gap-8 mb-8">
         {MOCK_DATA.map(user => (
-          <div key={user.email} className="flex items-center gap-2">
+          <div key={user.email} className="flex flex-col lg:flex-row items-center gap-2">
             <Card
               avatar={{
                 avatar: user.avatar,
@@ -87,7 +88,7 @@ const OurGroupPage = () => {
               email={user.email}
               isCloseShowing={false}
             />
-            <div className="h-[10px] w-[44px] bg-supernova" />
+            <div className="h-11 w-[10px] lg:h-[10px] lg:w-11 bg-supernova" />
             {user.pair ? (
               <Card
                 avatar={{
@@ -97,7 +98,7 @@ const OurGroupPage = () => {
                 name={user.pair.name}
                 email={user.pair.email}
                 isCloseShowing={false}
-                onClick={() => setIsSlideOut(true)}
+                onClick={() => setSelectedUser(user)}
               />
             ) : <EmptyCard /> }
           </div>
@@ -145,12 +146,51 @@ const OurGroupPage = () => {
 
       {/* Slide out */}
       <SlideOut
-        isOpen={isSlideOutOpen}
-        toggleOpen={() => setIsSlideOut(false)}
+        isOpen={!!selectedUser}
+        toggleOpen={() => setSelectedUser(null)}
       >
-        <p className="text-base">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo illum placeat sapiente? Suscipit at nobis dolore odio excepturi, quos voluptas nostrum animi in? Provident sed atque non at dolore vitae?
-        </p>
+        <h2 className="font-condensed text-7xl leading-[0.8] lg:text-[116px] uppercase text-white font-normal mb-5">
+          Wish List
+        </h2>
+        {!!selectedUser && (
+          <div className="relative mb-14">
+            <h6 className="absolute font-handwriting text-3xl text-white font-bold uppercase leading-tight -left-16 top-8">
+              For
+            </h6>
+            <Card
+              avatar={{
+                avatar: selectedUser.avatar,
+                alt: selectedUser.name
+              }}
+              name={selectedUser.name}
+              email={selectedUser.email}
+              isCloseShowing={false}
+            />
+          </div>
+        )}
+        <div className="flex flex-col gap-5">
+          <WishListItem
+            heading="iPhone 15"
+            number={1}
+            siteDescription="iPhone 15 and iPhone 15 Plus. Dynamic Island. 48MP Main camera with 2x Telephoto. All-day battery life. USB-C. 6.1” and 6.7” sizes."
+            siteImage='/images/placeholder__wish-list-image.png'
+            url="https://www.apple.com/"
+          />
+          <WishListItem
+            heading="iPhone 15 Pro"
+            number={2}
+            siteDescription="iPhone 15 and iPhone 15 Plus. Dynamic Island. 48MP Main camera with 2x Telephoto. All-day battery life. USB-C. 6.1” and 6.7” sizes."
+            siteImage='/images/placeholder__wish-list-image.png'
+            url="https://www.apple.com/"
+          />
+          <WishListItem
+            heading="iPhone 15 Mini"
+            number={3}
+            siteDescription="iPhone 15 and iPhone 15 Plus. Dynamic Island. 48MP Main camera with 2x Telephoto. All-day battery life. USB-C. 6.1” and 6.7” sizes."
+            siteImage='/images/placeholder__wish-list-image.png'
+            url="https://www.apple.com/"
+          />
+        </div>
       </SlideOut>
     </>
   )

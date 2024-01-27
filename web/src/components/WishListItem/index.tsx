@@ -2,7 +2,6 @@ const WishListItem = ({
   heading,
   number,
   url,
-  siteTitle,
   siteDescription,
   siteImage,
 }) => {
@@ -21,23 +20,12 @@ const WishListItem = ({
             Details
           </a>
         </div>
-        <div className="border-1 flex border-white">
-          <div className="flex-1 p-6">
-            <a
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-              className="mb-4 inline-block uppercase hover:underline"
-            >
-              {url}
-            </a>
-            <h3 className="mb-4 font-sans text-2xl font-bold">{siteTitle}</h3>
-            <p className="text-sm">{siteDescription}</p>
-          </div>
+        <div className="flex border border-b-silverTree">
+          <p className="flex-1 p-3 text-sm">{siteDescription}</p>
           <img
             src={siteImage}
-            alt={siteTitle}
-            className="w-full flex-1 object-cover"
+            alt={heading}
+            className="w-56 object-cover"
           />
         </div>
       </div>
