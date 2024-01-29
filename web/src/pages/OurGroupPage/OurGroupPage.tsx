@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 import Accordion from 'src/components/Accordion'
 import { AvatarProps } from 'src/components/Avatar/Avatar'
 import Card from 'src/components/Card'
@@ -62,7 +62,7 @@ const OurGroupPage = () => {
 
   return (
     <>
-      <MetaTags title="OurGroup" description="OurGroup page" />
+      <Metadata title="OurGroup" description="OurGroup page" />
 
       <h2 className="font-handwriting font-bold text-xl lg:text-[32px] text-white mb-3 uppercase">
         4 weeks & 2 days until December 23, 2024

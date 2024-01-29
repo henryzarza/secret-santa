@@ -1,10 +1,10 @@
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 import WishListField from 'src/components/WishListField'
 
 const WishListPage = () => {
   return (
     <>
-      <MetaTags title="WishList" description="WishList page" />
+      <Metadata title="WishList" description="WishList page" />
 
       <h1 className="font-condensed text-7xl leading-[0.8] lg:text-[116px] uppercase text-white font-normal mb-2">
         Wish list

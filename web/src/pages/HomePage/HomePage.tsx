@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import Icon from 'src/components/Icon/Icon'
 import CounterFilter from 'src/components/CounterFilter'
@@ -62,7 +62,7 @@ const HomePage = () => {
 
   return (
     <>
-      <MetaTags title="Secret Santa" description="Secret Santa Home page" />
+      <Metadata title="Secret Santa" description="Secret Santa Home page" />
 
       <h2 className="font-handwriting font-bold text-xl lg:text-[32px] text-white mb-3 uppercase">
         4 weeks & 2 days until

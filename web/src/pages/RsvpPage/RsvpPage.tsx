@@ -1,4 +1,4 @@
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import HeaderWithRulers from 'src/components/HeaderWithRulers'
 import RsvpButton from 'src/components/RsvpButton'
@@ -6,7 +6,7 @@ import RsvpButton from 'src/components/RsvpButton'
 const RsvpPage = () => {
   return (
     <>
-      <MetaTags title="RSVP" />
+      <Metadata title="RSVP" />
 
       <HeaderWithRulers className="text-white" heading="YOU'RE INVITED TO" />
       <h1 className="page-title">Smith Christmas</h1>

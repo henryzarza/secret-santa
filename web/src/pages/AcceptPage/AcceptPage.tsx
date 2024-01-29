@@ -1,5 +1,5 @@
 import { Form } from '@redwoodjs/forms'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import HeaderWithRulers from 'src/components/HeaderWithRulers'
 import ShowHidePassword from 'src/components/ShowHidePassword'
@@ -8,7 +8,7 @@ import Upload from 'src/components/Upload'
 const AcceptPage = () => {
   return (
     <>
-      <MetaTags title="Accept" description="Accept page" />
+      <Metadata title="Accept" description="Accept page" />
 
       <h3 className="m-0 p-0 text-center font-handwriting text-3xl uppercase leading-none text-white">
         Awesome
