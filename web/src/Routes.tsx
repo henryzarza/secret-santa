@@ -21,6 +21,7 @@ const Routes = () => {
         <Route path="/" page={HomePage} name="home" />
         <Route path="/wish-list" page={WishListPage} name="wishList" />
         <Route path="/our-group" page={OurGroupPage} name="ourGroup" />
+        <Route path="/thank-you" page={ThankYouPage} name="thankYou" />
       </PrivateSet>
 
       <Set wrap={AuthLayout}>

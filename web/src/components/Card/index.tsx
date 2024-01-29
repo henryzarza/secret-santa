@@ -9,7 +9,7 @@ const Card = ({
   onClick
 } : {
   avatar: AvatarProps;
-  isCloseShowing: boolean;
+  isCloseShowing?: boolean;
   name: string;
   email: string;
   onClick?: () => void;
