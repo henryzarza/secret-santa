@@ -1,5 +1,5 @@
 import Footer from 'src/components/Footer'
-import MyAccount from 'src/components/MyAccount'
+import UserDropdown from 'src/components/UserDropdown'
 import Nav from 'src/components/Nav'
 
 type InteriorLayoutProps = {
@@ -23,7 +23,7 @@ const InteriorLayout = ({ children }: InteriorLayoutProps) => {
         </aside>
         <div className="col-span-11 md:col-span-8 pr-12 pt-7">
           <div className="flex justify-end">
-            <MyAccount />
+            <UserDropdown />
           </div>
           {children}
         </div>
