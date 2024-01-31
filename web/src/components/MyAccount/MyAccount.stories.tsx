@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import MyAccount from '.'
 
 const meta: Meta<typeof MyAccount> = {
-  component: MyAccount,
+  component: MyAccount
 }
 
 export default meta

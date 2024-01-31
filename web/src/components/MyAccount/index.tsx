@@ -1,61 +1,132 @@
-import { useState } from 'react'
-
-import { AnimatePresence, motion } from 'framer-motion'
-
-import Avatar from '../Avatar/Avatar'
-import Icon from '../Icon/Icon'
+import { useEffect, useState } from "react"
+import { Form, Label, InputField, FieldError, Submit, EmailField } from "@redwoodjs/forms"
+import ShowHidePassword from "../ShowHidePassword"
+import Upload from "../Upload"
+import RadioButton from "../RadioButton"
 
 const MyAccount = () => {
-  const [isDropdownShowing, setIsDropdownShowing] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>()
+
+  useEffect(() => {
+    if (!localStorage.theme) {
+      setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    } else {
+      setTheme(localStorage.theme)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (theme) {
+      document.body.setAttribute('class', theme)
+    }
+  }, [theme])
+
+  const handleThemeChange = (value: 'light' | 'dark' | 'system') => {
+    if (value === 'system') {
+      setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      localStorage.removeItem('theme')
+    } else {
+      setTheme(value)
+      localStorage.setItem('theme', value)
+    }
+  }
+
+  const onSubmit = async (data: Record<string, string>) => {
+    console.log('Send data 📩', data)
+  }
 
   return (
-    <div className="relative">
-      <button
-        className="flex items-center gap-2 text-black dark:text-white"
-        onClick={() => setIsDropdownShowing((prevValue) => !prevValue)}
-      >
-        <motion.div animate={{ rotate: isDropdownShowing ? '-180deg' : '0' }}>
-          <Icon id="chevron" size={24} />
-        </motion.div>
-        <Avatar avatar="/images/placeholder__avatar-01.png" alt="Avatar" />
-        <div className="text-left">
-          <small className="text-sm">Logged in as</small>
-          <h6 className="text-lg font-bold">Cody Fisher</h6>
-        </div>
-      </button>
-
-      <AnimatePresence>
-        {isDropdownShowing && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 60 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute left-6 top-6 inline-block bg-white py-5 pl-4 pr-5 before:absolute before:-top-6 before:left-8 before:border-[12px] before:border-transparent before:border-b-white"
-          >
-            <ul className="flex flex-col gap-2">
-              <li className="flex items-center gap-x-3 font-condensed text-3xl uppercase text-black">
-                <div className="text-pastelMagenta">
-                  <Icon id="user" size={32} />
-                </div>
-                Account
-              </li>
-              <li className="flex items-center gap-x-3 font-condensed text-3xl uppercase text-black">
-                <div className="text-pastelMagenta">
-                  <Icon id="calendar" size={32} />
-                </div>
-                My Event
-              </li>
-              <li className="flex items-center gap-x-3 font-condensed text-3xl uppercase text-black">
-                <div className="text-pastelMagenta">
-                  <Icon id="logout" size={32} />
-                </div>
-                Logout
-              </li>
-            </ul>
-          </motion.nav>
+    <>
+      <h2 className="font-condensed text-7xl leading-[0.8] lg:text-[116px] uppercase text-white font-normal mb-10">
+        My Account
+      </h2>
+      <Form onSubmit={onSubmit} className="mb-10">
+        {!!theme && (
+          <div className="flex gap-3 flex-wrap justify-between">
+            <RadioButton
+              label="Light"
+              name="theme"
+              id="light"
+              value="light"
+              onChange={() => handleThemeChange('light')}
+              defaultChecked={theme === 'light'}
+            />
+            <RadioButton
+              label="Dark"
+              name="theme"
+              id="dark"
+              value="dark"
+              onChange={() => handleThemeChange('dark')}
+              defaultChecked={theme === 'dark'}
+            />
+            <RadioButton
+              label="System"
+              name="theme"
+              id="system"
+              value="system"
+              onChange={() => handleThemeChange('system')}
+              defaultChecked={theme === 'system'}
+            />
+          </div>
         )}
-      </AnimatePresence>
-    </div>
+        <div className="relative mb-4">
+          <Label name="name" errorClassName="error">
+            Name
+          </Label>
+          <InputField
+            name="name"
+            errorClassName="error"
+            placeholder=""
+            type="text"
+            autoComplete="name"
+            validation={{
+              required: {
+                value: true,
+                message: 'Name is required',
+              },
+            }}
+          />
+          <FieldError name="name" className="error-message" />
+        </div>
+        <div className="relative mb-4">
+          <Label name="email" errorClassName="error">
+            Email
+          </Label>
+          <EmailField
+            name="email"
+            errorClassName="error"
+            placeholder=""
+            autoComplete="email"
+            validation={{
+              required: {
+                value: true,
+                message: 'Email is required',
+              },
+            }}
+          />
+          <FieldError name="email" className="error-message" />
+        </div>
+        <div className="relative mb-4">
+          <ShowHidePassword
+            label="Password"
+            name="password"
+            autoComplete="current-password"
+            placeholder=""
+            validation={{
+              required: {
+                value: true,
+                message: 'Password is required',
+              },
+            }}
+          />
+          <FieldError name="password" className="error-message" />
+        </div>
+        <div className="mb-4">
+          <Upload />
+        </div>
+        <Submit>Update</Submit>
+      </Form>
+    </>
   )
 }
 
