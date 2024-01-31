@@ -59,20 +59,20 @@
     @apply bg-orangeRed border-fireEngineRed;
   }
 
-  /* checkbox */
-  input[type="checkbox"] {
+  /* radio */
+  input[type="radio"] {
     @apply hidden;
   }
 
-  input[type="checkbox"] + label {
+  input[type="radio"] + label {
     @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer;
   }
 
-  input[type="checkbox"] + label:before {
-    @apply content-[''] w-10 h-10 block relative -top-1 bg-unchecked;
+  input[type="radio"] + label:before {
+    @apply content-[''] w-10 h-10 block relative -top-1 rounded-full bg-silverTree;
   }
 
-  input[type="checkbox"]:checked + label:before {
+  input[type="radio"]:checked + label:before {
     @apply bg-checked;
   }
 
