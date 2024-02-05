@@ -1,11 +1,43 @@
 import { DateField, FieldError, Form, InputField, Label, Submit } from '@redwoodjs/forms'
-import { Metadata } from '@redwoodjs/web'
+import { Metadata, useMutation } from '@redwoodjs/web'
 import HeaderWithRulers from 'src/components/HeaderWithRulers'
 import Checkbox from 'src/components/Checkbox'
+import { toast } from '@redwoodjs/web/dist/toast'
+import { navigate, routes } from '@redwoodjs/router'
+
+const CREATE_EVENT_MUTATION = gql`
+  mutation createEventMutation($name: String!, $date: DateTime!, $sendReminder: Boolean!) {
+    createEvent(
+      input: {name: $name, date: $date, sendReminder: $sendReminder}
+    ) {
+      id
+      createdAt
+      date
+      name
+    }
+  }
+`
 
 const NewEventPage = () => {
+  const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
+    onCompleted: () => {
+      toast.success('Event was successfully created.')
+      navigate(routes.groupInvite())
+    },
+    onError: (error) => {
+      console.error(error)
+      toast.error(error.message)
+    }
+  })
+
   const onSubmit = async (data: Record<string, string>) => {
-    console.log({ data })
+    createEvent({
+      variables: {
+        name: data.eventName,
+        date: data.eventDate,
+        sendReminder: Boolean(data.reminder)
+      }
+    })
   }
 
   return (
@@ -53,7 +85,7 @@ const NewEventPage = () => {
          <Checkbox id="reminder" label="Send out a reminder before event" name="reminder" />
         </div>
 
-        <Submit>Submit</Submit>
+        <Submit disabled={loading}>Submit</Submit>
       </Form>
     </>
   )

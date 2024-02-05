@@ -18,6 +18,7 @@ const Routes = () => {
     <Router useAuth={useAuth}>
 
       <PrivateSet unauthenticated="login" wrap={InteriorLayout}>
+        <Route path="/group-invite" page={GroupInvitePage} name="groupInvite" />
         <Route path="/wish-list" page={WishListPage} name="wishList" />
         <Route path="/our-group" page={OurGroupPage} name="ourGroup" />
         <Route path="/thank-you" page={ThankYouPage} name="thankYou" />
