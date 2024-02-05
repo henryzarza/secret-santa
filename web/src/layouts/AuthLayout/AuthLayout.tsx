@@ -1,3 +1,4 @@
+import { Toaster } from '@redwoodjs/web/dist/toast'
 import Footer from 'src/components/Footer'
 
 type AuthLayoutProps = {
@@ -7,6 +8,7 @@ type AuthLayoutProps = {
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <>
+      <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <main className="min-h-screen w-full bg-silverTree bg-auth bg-[length:1440px_auto] bg-[center_top] bg-no-repeat min-[1440px]:bg-[length:100%_auto] dark:bg-nileBlue">
         <img
           src="/images/logo__secret-santa.svg"
