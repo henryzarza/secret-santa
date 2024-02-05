@@ -37,7 +37,8 @@
   input[type="password"],
   input[type="number"],
   input[type="email"],
-  input[type="text"] {
+  input[type="text"],
+  input[type="date"] {
     @apply font-sans text-2xl h-[100px] w-full px-7 text-black;
   }
 
@@ -60,19 +61,27 @@
   }
 
   /* radio */
-  input[type="radio"] {
+  input[type="radio"],
+  input[type="checkbox"] {
     @apply hidden;
   }
 
-  input[type="radio"] + label {
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
     @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer;
   }
 
-  input[type="radio"] + label:before {
+  input[type="radio"] + label:before,
+  input[type="checkbox"] + label:before {
     @apply content-[''] w-10 h-10 block relative -top-1 rounded-full bg-silverTree;
   }
 
-  input[type="radio"]:checked + label:before {
+  input[type="checkbox"] + label:before {
+    @apply rounded-none bg-white;
+  }
+
+  input[type="radio"]:checked + label:before,
+  input[type="checkbox"]:checked + label:before {
     @apply bg-checked;
   }
 
