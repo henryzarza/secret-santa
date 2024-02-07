@@ -20,9 +20,9 @@ const CREATE_EVENT_MUTATION = gql`
 
 const NewEventPage = () => {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
-    onCompleted: () => {
+    onCompleted: (data) => {
       toast.success('Event was successfully created.')
-      navigate(routes.groupInvite())
+      navigate(routes.groupInvite({ id: data.id }))
     },
     onError: (error) => {
       console.error(error)

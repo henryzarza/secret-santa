@@ -17,16 +17,16 @@ const Routes = () => {
   return (
     <Router useAuth={useAuth}>
 
+      <PrivateSet unauthenticated="login" wrap={AuthLayout}>
+        <Route path="/event/new" page={NewEventPage} name="newEvent" />
+      </PrivateSet>
+
       <PrivateSet unauthenticated="login" wrap={InteriorLayout}>
-        <Route path="/group-invite" page={GroupInvitePage} name="groupInvite" />
+        <Route path="/event/{id}" page={GroupInvitePage} name="groupInvite" />
         <Route path="/wish-list" page={WishListPage} name="wishList" />
         <Route path="/our-group" page={OurGroupPage} name="ourGroup" />
         <Route path="/thank-you" page={ThankYouPage} name="thankYou" />
         <Route path="/" page={HomePage} name="home" />
-      </PrivateSet>
-
-      <PrivateSet unauthenticated="login" wrap={AuthLayout}>
-        <Route path="/event/new" page={NewEventPage} name="newEvent" />
       </PrivateSet>
 
       <Set wrap={AuthLayout}>

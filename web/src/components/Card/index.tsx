@@ -20,7 +20,7 @@ const Card = ({
       onClick={onClick}
     >
       {isCloseShowing && (
-        <button className="absolute right-8 top-8 text-bombay">
+        <button className="absolute right-8 top-8 text-bombay hover:text-orangeRed">
           <Icon id="close" />
         </button>
       )}
