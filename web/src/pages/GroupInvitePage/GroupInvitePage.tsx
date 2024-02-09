@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Metadata, useQuery } from '@redwoodjs/web'
 
+import DeleteEvent from 'src/components/DeleteEvent'
 import EditEvent from 'src/components/EditEvent'
 import Icon from 'src/components/Icon/Icon'
 import InviteGroup from 'src/components/InviteGroup'
@@ -29,11 +30,10 @@ export const EVENT_DETAIL_QUERY = gql`
 
 const GroupInvitePage = ({ id }: { id: string }) => {
   const [isSlideOutOpen, setIsSlideOutOpen] = useState(false)
-  const { data, error } = useQuery(EVENT_DETAIL_QUERY, {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const { data, error, loading } = useQuery(EVENT_DETAIL_QUERY, {
     variables: { id },
   })
-
-  console.log({ data })
 
   if (error) {
     return (
@@ -46,7 +46,9 @@ const GroupInvitePage = ({ id }: { id: string }) => {
   if (!data?.event) {
     return (
       <h2 className="mb-3 mt-10 font-handwriting text-xl font-bold uppercase text-white lg:text-[32px]">
-        Oops... it seems the Event does not exist 🤔
+        {loading
+          ? 'Loading data...'
+          : 'Oops... it seems the Event does not exist 🤔'}
       </h2>
     )
   }
@@ -82,8 +84,28 @@ const GroupInvitePage = ({ id }: { id: string }) => {
         isOpen={isSlideOutOpen}
         toggleOpen={() => setIsSlideOutOpen(false)}
       >
-        {Boolean(data?.event) && <EditEvent data={data.event} />}
+        {Boolean(data?.event) && (
+          <>
+            <EditEvent data={data.event} />
+            <button
+              className="mx-auto flex items-center gap-2 bg-transparent px-4 py-2 text-2xl font-normal text-black underline transition-colors hover:bg-orangeRed hover:text-white"
+              onClick={() => {
+                setIsSlideOutOpen(false)
+                setIsDeleteModalOpen(true)
+              }}
+            >
+              <Icon id="trash" />
+              Delete the Event
+            </button>
+          </>
+        )}
       </SlideOut>
+      {isDeleteModalOpen && (
+        <DeleteEvent
+          data={data.event}
+          onCloseModal={() => setIsDeleteModalOpen(false)}
+        />
+      )}
     </>
   )
 }

@@ -14,8 +14,6 @@ import Checkbox from 'src/components/Checkbox'
 import { formatDateFromDB } from 'src/helpers/date'
 import { EVENT_DETAIL_QUERY } from 'src/pages/GroupInvitePage/GroupInvitePage'
 
-import Icon from '../Icon/Icon'
-
 const UPDATE_EVENT_MUTATION = gql`
   mutation updateEventMutation(
     $id: String!
@@ -118,10 +116,6 @@ const EditEvent = ({
       <Submit className="mb-14" disabled={loading}>
         Update
       </Submit>
-      <button className="mx-auto flex items-center gap-2 bg-transparent px-4 py-2 text-2xl font-normal text-black underline transition-colors hover:bg-orangeRed hover:text-white">
-        <Icon id="trash" />
-        Delete the Event
-      </button>
     </Form>
   )
 }

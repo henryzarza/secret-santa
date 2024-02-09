@@ -1,19 +1,28 @@
-import { DateField, FieldError, Form, InputField, Label, Submit } from '@redwoodjs/forms'
-import { Metadata, useMutation } from '@redwoodjs/web'
-import HeaderWithRulers from 'src/components/HeaderWithRulers'
-import Checkbox from 'src/components/Checkbox'
-import { toast } from '@redwoodjs/web/dist/toast'
+import {
+  DateField,
+  FieldError,
+  Form,
+  InputField,
+  Label,
+  Submit,
+} from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
+import { Metadata, useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/dist/toast'
+
+import Checkbox from 'src/components/Checkbox'
+import HeaderWithRulers from 'src/components/HeaderWithRulers'
 
 const CREATE_EVENT_MUTATION = gql`
-  mutation createEventMutation($name: String!, $date: DateTime!, $sendReminder: Boolean!) {
+  mutation createEventMutation(
+    $name: String!
+    $date: DateTime!
+    $sendReminder: Boolean!
+  ) {
     createEvent(
-      input: {name: $name, date: $date, sendReminder: $sendReminder}
+      input: { name: $name, date: $date, sendReminder: $sendReminder }
     ) {
       id
-      createdAt
-      date
-      name
     }
   }
 `
@@ -21,13 +30,15 @@ const CREATE_EVENT_MUTATION = gql`
 const NewEventPage = () => {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     onCompleted: (data) => {
-      toast.success('Event was successfully created.')
-      navigate(routes.groupInvite({ id: data.id }))
+      if (data?.createEvent) {
+        toast.success('Event was successfully created.')
+        navigate(routes.groupInvite({ id: data.createEvent.id }))
+      }
     },
     onError: (error) => {
       console.error(error)
       toast.error(error.message)
-    }
+    },
   })
 
   const onSubmit = async (data: Record<string, string>) => {
@@ -35,8 +46,8 @@ const NewEventPage = () => {
       variables: {
         name: data.eventName,
         date: data.eventDate,
-        sendReminder: Boolean(data.reminder)
-      }
+        sendReminder: Boolean(data.reminder),
+      },
     })
   }
 
@@ -44,8 +55,11 @@ const NewEventPage = () => {
     <>
       <Metadata title="Create Event" />
 
-      <HeaderWithRulers className="mb-8 text-white" heading="SET UP YOUR EVENT" />
-      <Form onSubmit={onSubmit} className="mb-10">
+      <HeaderWithRulers
+        className="mb-8 text-white"
+        heading="SET UP YOUR EVENT"
+      />
+      <Form onSubmit={onSubmit} className="pb-10">
         <div className="relative mb-4">
           <Label name="eventName" errorClassName="error">
             Event Name
@@ -82,7 +96,11 @@ const NewEventPage = () => {
           <FieldError name="eventDate" className="error-message" />
         </div>
         <div className="relative mb-4">
-         <Checkbox id="reminder" label="Send out a reminder before event" name="reminder" />
+          <Checkbox
+            id="reminder"
+            label="Send out a reminder before event"
+            name="reminder"
+          />
         </div>
 
         <Submit disabled={loading}>Submit</Submit>

@@ -90,7 +90,7 @@
 
   button.medium,
   button[type='submit'].medium {
-    @apply h-12 px-8 font-sans text-xl font-bold uppercase tracking-tight;
+    @apply h-12 px-8 font-sans text-lg font-bold uppercase tracking-tight transition-colors;
   }
 
   a.button.small,
