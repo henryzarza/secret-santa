@@ -1,11 +1,13 @@
 import { useState } from 'react'
+
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { useAuth } from 'src/auth'
+
 import Avatar from '../Avatar/Avatar'
 import Icon from '../Icon/Icon'
-import SlideOut from '../SlideOut'
 import MyAccount from '../MyAccount'
+import SlideOut from '../SlideOut'
 
 const UserDropdown = () => {
   const [isDropdownShowing, setIsDropdownShowing] = useState(false)
@@ -38,24 +40,33 @@ const UserDropdown = () => {
               className="absolute left-6 top-6 inline-block bg-white py-5 pl-4 pr-5 before:absolute before:-top-6 before:left-8 before:border-[12px] before:border-transparent before:border-b-white"
             >
               <ul className="flex flex-col gap-2">
-                <li
-                  className="flex items-center gap-x-3 font-condensed text-3xl uppercase leading-none cursor-pointer text-black hover:text-pastelMagenta"
+                <button
+                  className="flex cursor-pointer items-center gap-x-3 font-condensed text-3xl uppercase leading-none text-black hover:text-pastelMagenta"
                   onClick={() => setIsSlideOutOpen(true)}
                 >
                   <div className="text-pastelMagenta">
                     <Icon id="user" size={32} />
                   </div>
                   Account
-                </li>
-                <li
-                  className="flex items-center gap-x-3 font-condensed text-3xl uppercase leading-none cursor-pointer text-black hover:text-pastelMagenta"
+                </button>
+                <button
+                  className="flex cursor-pointer items-center gap-x-3 font-condensed text-3xl uppercase leading-none text-black hover:text-pastelMagenta"
+                  onClick={() => setIsSlideOutOpen(true)}
+                >
+                  <div className="text-pastelMagenta">
+                    <Icon id="calendar" size={32} />
+                  </div>
+                  My Events
+                </button>
+                <button
+                  className="flex cursor-pointer items-center gap-x-3 font-condensed text-3xl uppercase leading-none text-black hover:text-pastelMagenta"
                   onClick={logOut}
                 >
                   <div className="text-pastelMagenta">
                     <Icon id="logout" size={32} />
                   </div>
                   Logout
-                </li>
+                </button>
               </ul>
             </motion.nav>
           )}
