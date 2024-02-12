@@ -39,7 +39,7 @@ const EditEvent = ({
 
   return (
     <Modal status="error" onClose={onCloseModal}>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center text-center">
         <h6 className="mb-14 font-sans text-xl font-bold leading-tight text-white">
           Are you sure you want to delete this?
         </h6>

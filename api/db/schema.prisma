@@ -17,8 +17,7 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  firstName           String?
-  lastName            String?
+  name                String?
   avatar              String?
   createdAt           DateTime   @default(now())
   updatedAt           DateTime   @updatedAt
@@ -29,6 +28,7 @@ model User {
   wishList            WishList[]
   thankYouAuthor      ThankYou[] @relation(name: "ThankYou_User")
   thankYouToUser      ThankYou[] @relation(name: "ThankYou_ToUser")
+  Event               Event[]
 }
 
 enum Role {
@@ -54,16 +54,18 @@ enum Status {
 }
 
 model Event {
-  id           String     @id @default(uuid())
-  name         String
-  date         DateTime
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  sendReminder Boolean    @default(false)
-  invite       Invite[]
-  pairing      Pairing[]
-  wishList     WishList[]
-  thankYou     ThankYou[]
+  id            String     @id @default(uuid())
+  name          String
+  date          DateTime
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  sendReminder  Boolean    @default(false)
+  createdByUser Int
+  user          User       @relation(fields: [createdByUser], references: [id])
+  invite        Invite[]
+  pairing       Pairing[]
+  wishList      WishList[]
+  thankYou      ThankYou[]
 }
 
 model Pairing {
