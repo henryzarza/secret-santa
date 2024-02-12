@@ -17,8 +17,8 @@ export const schema = gql`
   }
 
   type Query {
-    invites: [Invite!]! @skipAuth
-    invite(id: String!): Invite @skipAuth
+    invites: [Invite!]! @requireAuth
+    invite(id: String!): Invite @requireAuth
   }
 
   input CreateInviteInput {

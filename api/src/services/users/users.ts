@@ -54,4 +54,7 @@ export const User: UserRelationResolvers = {
   thankYouToUser: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).thankYouToUser()
   },
+  Event: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).Event()
+  },
 }

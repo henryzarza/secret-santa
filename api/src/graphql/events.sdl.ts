@@ -6,6 +6,8 @@ export const schema = gql`
     createdAt: DateTime!
     updatedAt: DateTime!
     sendReminder: Boolean!
+    createdByUser: Int!
+    user: User!
     invite: [Invite]!
     pairing: [Pairing]!
     wishList: [WishList]!
@@ -13,36 +15,27 @@ export const schema = gql`
   }
 
   type Query {
-    events: [Event!]! @skipAuth
-    event(id: String!): Event @skipAuth
-  }
-
-  """ type Query {
     events: [Event!]! @requireAuth
     event(id: String!): Event @requireAuth
-  } """
+  }
 
   input CreateEventInput {
     name: String!
     date: DateTime!
     sendReminder: Boolean!
+    createdByUser: Int!
   }
 
   input UpdateEventInput {
     name: String
     date: DateTime
     sendReminder: Boolean
+    createdByUser: Int
   }
 
-  """ type Mutation {
+  type Mutation {
     createEvent(input: CreateEventInput!): Event! @requireAuth
     updateEvent(id: String!, input: UpdateEventInput!): Event! @requireAuth
     deleteEvent(id: String!): Event! @requireAuth
-  } """
-
-  type Mutation {
-    createEvent(input: CreateEventInput!): Event! @skipAuth
-    updateEvent(id: String!, input: UpdateEventInput!): Event! @skipAuth
-    deleteEvent(id: String!): Event! @skipAuth
   }
 `

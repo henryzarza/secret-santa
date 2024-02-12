@@ -39,6 +39,9 @@ export const deleteEvent: MutationResolvers['deleteEvent'] = ({ id }) => {
 }
 
 export const Event: EventRelationResolvers = {
+  user: (_obj, { root }) => {
+    return db.event.findUnique({ where: { id: root?.id } }).user()
+  },
   invite: (_obj, { root }) => {
     return db.event.findUnique({ where: { id: root?.id } }).invite()
   },
